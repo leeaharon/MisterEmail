@@ -1,0 +1,23 @@
+
+.email-preview {
+    margin: 5px;
+    padding: 5px;
+    background-color: lightgray;
+    border-radius: 5px;
+    flex-direction: column;
+    
+
+
+
+}
+
+h2 {
+    margin: 4px;
+    font-size: 90%;
+  }
+  .email-preview:hover {
+    background-color: rgb(91, 91, 82);
+  }
+ 
+  
+  
