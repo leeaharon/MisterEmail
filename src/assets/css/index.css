@@ -7,6 +7,9 @@
 /* Pages */
 @import "./pages/home.css";
 @import "./pages/about.css";
+@import "./pages/email-detail.css";
+@import "./pages/email-index.css";
+
 
 
 

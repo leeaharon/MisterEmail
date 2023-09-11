@@ -1,17 +1,23 @@
 import { useEffect, useState } from 'react'
 
+import { Link } from "react-router-dom";
+
 import { emailService } from "../services/email.service";
 
 import { EmailList } from '../cmps/EmailList';
 
 
+import { IoArrowBackCircleSharp } from "@react-icons/all-files/Io5/IoArrowBackCircleSharp";
+
+
+
 
 export function MailIndex() {
 
-    const[emails,setEmails]=useState(null)
-    useEffect(()=>{
+    const [emails, setEmails] = useState(null)
+    useEffect(() => {
         loadEmails();
-    },[])
+    }, [])
 
     async function loadEmails() {
         try {
@@ -34,11 +40,15 @@ export function MailIndex() {
 
 
     console.log(emails);
-    if(!emails) return <div>Loading...</div>
+    if (!emails) return <div>Loading...</div>
     return (
         <section className="emails_index">
+            <span> <Link  to={"/"}><IoArrowBackCircleSharp /> back </Link></span>
+
             <h1>Welcome to mail box </h1>
+
             <EmailList emails={emails} onRemove={onRemoveEmail} />
+
 
         </section>
     )

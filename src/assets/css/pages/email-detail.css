@@ -1,0 +1,29 @@
+.email-details {
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+
+}
+
+.email-details>* {
+    margin-top: 10px;
+}
+
+.email-details h1 {
+    padding: 5px;
+    font-weight: bold;
+}
+
+.email-details>h1>span {
+    background-color: rgb(215, 222, 250);
+}
+.email-details a{
+    text-align: right;
+    text-decoration:none;
+
+    
+}
+.email-details a:hover{ 
+    color: rgb(135, 181, 207);  
+
+}

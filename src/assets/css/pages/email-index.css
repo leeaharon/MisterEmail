@@ -1,0 +1,11 @@
+.email-index>span back a{
+    text-align: right;
+    text-decoration:none;
+
+    
+}
+.email-index>span back a:hover{ 
+    color: rgb(135, 181, 207);  
+
+}
+
