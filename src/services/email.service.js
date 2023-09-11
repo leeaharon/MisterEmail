@@ -15,14 +15,11 @@ const STORAGE_KEY = 'emails'
 _createEmails()
 
 async function query(filterBy) {
-    const emails = await storageService.query(STORAGE_KEY)
+    let emails = await storageService.query(STORAGE_KEY)
     if (filterBy) {
-        var { type, maxBatteryStatus, minBatteryStatus, model } = filterBy
-        maxBatteryStatus = maxBatteryStatus || Infinity
-        minBatteryStatus = minBatteryStatus || 0
-        robots = robots.filter(robot => robot.type.toLowerCase().includes(type.toLowerCase()) && robot.model.toLowerCase().includes(model.toLowerCase())
-            && (robot.batteryStatus < maxBatteryStatus)
-            && robot.batteryStatus > minBatteryStatus)
+        let { subject=''} = filterBy
+        emails = emails.filter(email => email.subject.toLowerCase().includes(subject.toLowerCase())|| 
+        email.body.toLowerCase().includes(subject.toLowerCase()))
     }
     return emails
 }
@@ -41,6 +38,13 @@ function save(robotToSave) {
     } else {
         robotToSave.isOn = false
         return storageService.post(STORAGE_KEY, robotToSave)
+    }
+}
+
+function getDefaultFilter() {
+    return {
+        subject: ''
+        
     }
 }
 
@@ -86,17 +90,7 @@ function _createEmails() {
                 from: '2momo@momo.com',
                 to: 'user@appsus.com'
             },
-            {
-                id: 'e142',
-                subject: 'e2- Miss you!',
-                body: 'e2-Would love to catch up sometimes',
-                isRead: false,
-                isStarred: false,
-                sentAt: 2551133930594,
-                removedAt: null, //for later use
-                from: '2momo@momo.com',
-                to: 'user@appsus.com'
-            },
+            
 
             {
                 id: 'e103',
