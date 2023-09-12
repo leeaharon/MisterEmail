@@ -7,9 +7,18 @@
     flex-direction: column;
     
 
+}
+.dark{
+  font-weight: bold;
 
 
 }
+.light{
+  font-weight: normal;
+
+
+}
+
 
 h2 {
     margin: 4px;

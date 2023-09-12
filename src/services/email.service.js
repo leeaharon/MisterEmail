@@ -8,18 +8,23 @@ export const emailService = {
     getById,
     createEmail,
     _createEmails
+    
 }
 
 const STORAGE_KEY = 'emails'
 
 _createEmails()
-
+// filterBy={subject :'' , isRead:null}
 async function query(filterBy) {
+    console.log("filter log",filterBy);
     let emails = await storageService.query(STORAGE_KEY)
-    if (filterBy) {
+    if (filterBy.subject) {
         let { subject=''} = filterBy
         emails = emails.filter(email => email.subject.toLowerCase().includes(subject.toLowerCase())|| 
         email.body.toLowerCase().includes(subject.toLowerCase()))
+    }
+    if(filterBy.isRead !== null){
+        emails = emails.filter(email=> email.isRead ===filterBy.isRead)
     }
     return emails
 }
@@ -28,16 +33,17 @@ function getById(id) {
     return storageService.get(STORAGE_KEY, id)
 }
 
+
 function remove(id) {
     return storageService.remove(STORAGE_KEY, id)
 }
 
-function save(robotToSave) {
-    if (robotToSave.id) {
-        return storageService.put(STORAGE_KEY, robotToSave)
+function save(emailToSave) {
+    if (emailToSave.id) {
+        return storageService.put(STORAGE_KEY, emailToSave)
     } else {
         robotToSave.isOn = false
-        return storageService.post(STORAGE_KEY, robotToSave)
+        return storageService.post(STORAGE_KEY, emailToSave)
     }
 }
 

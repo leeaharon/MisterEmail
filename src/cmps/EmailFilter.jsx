@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react"
 
 export function EmailFilter({ onSetFilter }) {
-    const [filterByToEdit, setfilterByToEdit] = useState({ subject: '' })
+    const [filterByToEdit, setfilterByToEdit] = useState({ subject: '' ,isRead:null})
 
     useEffect(() => {
        onSetFilter(filterByToEdit)
@@ -23,14 +23,26 @@ export function EmailFilter({ onSetFilter }) {
         onSetFilter(filterByToEdit)
     }
 
+    function handleReadChange(){
+        
+        setfilterByToEdit((prevFilter) => ({ ...prevFilter, isRead: true }))
+    }
+    function handleAllmail(){
+        
+        setfilterByToEdit((prevFilter) => ({ ...prevFilter, isRead: null }))
+    }
+
     return (
         <form className="email-filter" onSubmit={onSubmitFilter}>
             <label htmlFor="subject">subject: </label>
             <input type="text" id="subject" placeholder="search by subject message"
                 onChange={handleSubjectChange}
                 value={filterByToEdit.subject} />
-
             <button>Search</button>
+            <button onClick={handleReadChange} >Read</button>
+            <button>UnRead</button>
+            <button onClick={handleAllmail}>All Mail</button>
+
 
         </form>
 

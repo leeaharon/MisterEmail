@@ -11,27 +11,40 @@ export function MailDetails() {
     const params = useParams()
 
     useEffect(() => {
+
         loadEmails()
 
     }, [])
+    
+    useEffect(() => {
+
+        
+
+    }, [email])
 
     async function loadEmails() {
         try {
             const email = await emailService.getById(params.mailId)
+            email.isRead=true
+            emailService.save(email)
             setEmail(email)
         } catch (err) {
             console.log('Had issues loading emails', err);
         }
     }
+
     if (!email) return <div>Loading...</div>
     return (
         <section className="email-details">
-             <Link to={"/mail"}><IoArrowBackCircleSharp/> back </Link>
+            <Link to={"/mail"}><IoArrowBackCircleSharp /> back </Link>
             <h1><span>subject: {email.subject}</span></h1>
             <h5>from: {email.from}</h5>
             <h6>{email.to}</h6>
             <h3>message: {email.body}</h3>
-      
+            
+
+
+
         </section>
     )
 }
