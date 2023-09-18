@@ -26,6 +26,9 @@ async function query(filterBy) {
     if(filterBy.isRead !== null){
         emails = emails.filter(email=> email.isRead ===filterBy.isRead)
     }
+    if(filterBy.isStarred !== null){
+        emails = emails.filter(email=> email.isStarred ===filterBy.isStarred)
+    }
     return emails
 }
 
@@ -90,7 +93,7 @@ function _createEmails() {
                 subject: 'e2- Miss you!',
                 body: 'e2-Would love to catch up sometimes',
                 isRead: false,
-                isStarred: false,
+                isStarred: true,
                 sentAt: 2551133930594,
                 removedAt: null, //for later use
                 from: '2momo@momo.com',

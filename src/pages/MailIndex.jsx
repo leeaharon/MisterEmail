@@ -18,7 +18,8 @@ export function MailIndex() {
     const [emails, setEmails] = useState(null)
     const [filterBy, setfilterBy] = useState({
         subject: '',
-        isRead:null
+        isRead:null,
+        isStarred:null
     })
 
     useEffect(() => {

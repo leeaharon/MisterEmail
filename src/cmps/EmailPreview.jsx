@@ -11,9 +11,10 @@ export function EmailPreview({ email }) {
 
     return (
         <article className={"email-preview" }>
+            
             <Link className="open" to={`/mail/${email.id}`}>
                 {console.log('emailid', email.id)}
-                <span><HiMail /> </span>
+                <span className="mesicon"><HiMail /> </span>
                 <div className={dynClass}>
                    <span>{email.from}</span>
                     <h2>{email.subject}</h2></div>

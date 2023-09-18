@@ -1,6 +1,10 @@
 
 import { EmailPreview } from "./EmailPreview";
 import { MdDelete } from "@react-icons/all-files/md/MdDelete";
+import { IoIosStarOutline } from "@react-icons/all-files/Io/IoIosStarOutline";
+import { IoIosStar } from "@react-icons/all-files/Io/IoIosStar";
+
+
 import { useEffect, useState } from 'react'
 
 
@@ -9,10 +13,10 @@ export function EmailList({ emails, onRemove }) {
 
     const [checked, setChecked] = useState(false);
 
-  const handleChange = () => {
+ /* const handleChange = () => {
     setChecked(!checked);
   };
-  console.log("checkbox:",checked);
+  console.log("checkbox:",checked);*/
 
     return (
 
@@ -22,10 +26,13 @@ export function EmailList({ emails, onRemove }) {
                     <div className="email-action">
                         <button onClick={() => onRemove(email.id)}><MdDelete /></button>
                     </div>
-                   {/*} <div>
-                        <input className="star" type="checkbox" title="bookmark page" checked={checked}
-                            onChange={handleChange}/>
-            </div>*/}
+                    <div>
+                    <button onClick={() => onStar(email.id)}><IoIosStarOutline /></button>
+                    <button onClick={() => onStar2(email.id)}><IoIosStar /></button>
+
+
+                    </div>
+                  
                     <EmailPreview email={email} />
                 </li>)
             }

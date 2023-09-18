@@ -1,12 +1,20 @@
 
 .email-preview {
-    margin: 5px;
+    margin: 25px;
     padding: 5px;
     background-color: lightgray;
     border-radius: 5px;
     flex-direction: column;
     
 
+}
+.open{
+  display: flex;
+
+}
+.mesicon{
+  margin-right: 10px;
+  margin-top: 3px;
 }
 .dark{
   font-weight: bold;
@@ -18,6 +26,7 @@
 
 
 }
+
 
 
 h2 {
