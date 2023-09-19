@@ -29,7 +29,7 @@ export function EmailFilter({ onSetFilter }) {
     }
     function handleAllmail(){
         
-        setfilterByToEdit((prevFilter) => ({ ...prevFilter, isRead: null,isStarred:null }))
+        setfilterByToEdit((prevFilter) => ({ ...prevFilter, isRead: null, isStarred:null }))
     }
     function handlestarmail(){
         

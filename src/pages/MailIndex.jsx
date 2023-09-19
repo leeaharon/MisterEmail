@@ -2,6 +2,8 @@ import { useEffect, useState } from 'react'
 
 import { Link } from "react-router-dom";
 
+import { useParams } from "react-router"
+
 import { emailService } from "../services/email.service";
 
 import { EmailList } from '../cmps/EmailList';
@@ -22,6 +24,7 @@ export function MailIndex() {
         isStarred:null
     })
 
+
     useEffect(() => {
         loadEmails()
     }, [filterBy])
@@ -36,6 +39,7 @@ export function MailIndex() {
             console.log('Had issues loading emails', err);
         }
     }
+    
 
     async function onRemoveEmail(emailId) {
         try {
@@ -47,11 +51,32 @@ export function MailIndex() {
         }
     }
 
+   
     async function onSaveeEmail(emailId) {
         try {
             console.log('emailId', emailId);
             await emailService.save(emailId)
             setEmails((prevEmails) => prevEmails.filter(email => email.id == emailId))
+        } catch (err) {
+            console.log('Had issues loading emails', err);
+        }
+    }
+
+    async function ontoggleisStar(mail) {
+        try {
+           
+           console.log('emailId-star', mail);
+           mail.isStarred=!mail.isStarred
+           console.log('emailId-starchange star', mail);
+
+            await emailService.save(mail)
+           // setEmails((prevEmails) => prevEmails.map(email => email.id === mail.id))
+           setEmails(emails.map(email=>{
+            if(email.id===mail.id){
+                return {...email,isStarred:mail.isStarred};
+            }
+            return email;
+           }))
         } catch (err) {
             console.log('Had issues loading emails', err);
         }
@@ -71,7 +96,9 @@ export function MailIndex() {
            
                     <h1>Welcome to mail box </h1>
                     <EmailFilter onSetFilter={onSetFilter} />
-                    <EmailList emails={emails} onRemove={onRemoveEmail} onSave={onSaveeEmail} />
+                    <EmailList emails={emails} onRemove={onRemoveEmail} onSave={onSaveeEmail}
+                    ontoggleisStar={ontoggleisStar}
+                     />
 
 
                 </section>

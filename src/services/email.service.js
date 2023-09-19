@@ -41,6 +41,8 @@ function remove(id) {
     return storageService.remove(STORAGE_KEY, id)
 }
 
+
+
 function save(emailToSave) {
     if (emailToSave.id) {
         return storageService.put(STORAGE_KEY, emailToSave)
@@ -93,7 +95,7 @@ function _createEmails() {
                 subject: 'e2- Miss you!',
                 body: 'e2-Would love to catch up sometimes',
                 isRead: false,
-                isStarred: true,
+                isStarred: false,
                 sentAt: 2551133930594,
                 removedAt: null, //for later use
                 from: '2momo@momo.com',

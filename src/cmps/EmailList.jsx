@@ -6,17 +6,14 @@ import { IoIosStar } from "@react-icons/all-files/Io/IoIosStar";
 
 
 import { useEffect, useState } from 'react'
+import { emailService } from "../services/email.service";
 
 
 
-export function EmailList({ emails, onRemove }) {
+export function EmailList({ emails, onRemove,ontoggleisStar }) {
 
-    const [checked, setChecked] = useState(false);
-
- /* const handleChange = () => {
-    setChecked(!checked);
-  };
-  console.log("checkbox:",checked);*/
+    
+    
 
     return (
 
@@ -27,9 +24,9 @@ export function EmailList({ emails, onRemove }) {
                         <button onClick={() => onRemove(email.id)}><MdDelete /></button>
                     </div>
                     <div>
-                    <button onClick={() => onStar(email.id)}><IoIosStarOutline /></button>
-                    <button onClick={() => onStar2(email.id)}><IoIosStar /></button>
-
+                    <button onClick={() => ontoggleisStar(email) }>
+                        {email.isStarred?<IoIosStar />:<IoIosStarOutline />}</button>
+                   
 
                     </div>
                   
