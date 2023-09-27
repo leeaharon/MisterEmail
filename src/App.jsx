@@ -6,6 +6,7 @@ import { Home } from './pages/Home';
 import { About } from './pages/About';
 import { MailIndex } from './pages/MailIndex';
 import { MailDetails } from './pages/MailDetails';
+import MailCompose  from './cmps/MailCompose';
 
 
 
@@ -29,9 +30,10 @@ export function App() {
             <Routes>
                         <Route path="/" element={<Home />} />
                         <Route path="/about" element={<About />} />
-                        <Route path="/mail" element={<MailIndex />} />
+                        <Route path="/mail" element={<MailIndex />} >
+                            <Route path="/mail/compose" element={<MailCompose/>}/>
+                        </Route>
                         <Route path="/mail/:mailId" element={<MailDetails />} />
-
                     </Routes>
                 {/*<Home />*/}
             </main>

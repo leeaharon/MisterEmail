@@ -10,28 +10,17 @@ import { emailService } from "../services/email.service";
 
 
 
-export function EmailList({ emails, onRemove,ontoggleisStar }) {
+export function EmailList({ emails, onRemove, ontoggleisStar }) {
 
-    
-    
+
+
 
     return (
 
         <ul className="email-list">
             {emails.map(email =>
-                <li key={email.id}>
-                    <div className="email-action">
-                        <button onClick={() => onRemove(email.id)}><MdDelete /></button>
-                    </div>
-                    <div>
-                    <button onClick={() => ontoggleisStar(email) }>
-                        {email.isStarred?<IoIosStar />:<IoIosStarOutline />}</button>
-                   
-
-                    </div>
-                  
-                    <EmailPreview email={email} />
-                </li>)
+                <EmailPreview email={email} onRemove={onRemove} ontoggleisStar={ontoggleisStar} key={email.id} />
+            )
             }
         </ul>
 

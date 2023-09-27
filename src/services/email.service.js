@@ -47,7 +47,6 @@ function save(emailToSave) {
     if (emailToSave.id) {
         return storageService.put(STORAGE_KEY, emailToSave)
     } else {
-        robotToSave.isOn = false
         return storageService.post(STORAGE_KEY, emailToSave)
     }
 }
@@ -59,12 +58,12 @@ function getDefaultFilter() {
     }
 }
 
-function createEmail(subject = '', body = '', isRed = false, isStarred = false, sentAt = '', removedAt = null, //for later use
-    from = '', to = '') {
+function createEmail(subject = '', body = '', isRead = false, isStarred = false, sentAt = '', removedAt = null, //for later use
+    from = 'lee@gmail.com', to = '') {
     return {
         subject,
         body,
-        isRed,
+        isRead,
         isStarred,
         sentAt,
         removedAt,
@@ -72,6 +71,11 @@ function createEmail(subject = '', body = '', isRed = false, isStarred = false, 
         to
     }
 }
+const loggedinUser = {
+    email: 'lee@gmail.com',
+    fullname: 'lee Aharon'
+   }
+   
 
 function _createEmails() {
     let emails = utilService.loadFromStorage(STORAGE_KEY)
@@ -87,7 +91,7 @@ function _createEmails() {
                 sentAt: 1551133930594,
                 removedAt: null, //for later use
                 from: 'momo@momo.com',
-                to: 'user@appsus.com'
+                to: 'lee@gmail.com'
             },
 
             {
@@ -99,7 +103,7 @@ function _createEmails() {
                 sentAt: 2551133930594,
                 removedAt: null, //for later use
                 from: '2momo@momo.com',
-                to: 'user@appsus.com'
+                to: 'lee@gmail.com'
             },
             
 
@@ -112,7 +116,18 @@ function _createEmails() {
                 sentAt: 3551133930594,
                 removedAt: null, //for later use
                 from: '3momo@momo.com',
-                to: 'user@appsus.com'
+                to: 'lee@gmail.com'
+            },
+            {
+                id: 'e104',
+                subject: 'e4-Miss you!',
+                body: 'e4-Would love to catch up dkfvvfdbhbhjbjbjbhjbjbbhjbhjbjvdfvdfvfdvfdvfdvfdvfdvfdvfdvfdvfdvfdvimes',
+                isRead: false,
+                isStarred: false,
+                sentAt: 3551133930594,
+                removedAt: null, //for later use
+                from: '4momo@momo.com',
+                to: 'lee@gmail.com'
             },
         ]
         utilService.saveToStorage(STORAGE_KEY, emails)

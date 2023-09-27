@@ -1,0 +1,18 @@
+.mail-compose{
+    background-color: antiquewhite;
+    padding: 2em;
+    border-radius: 1em;
+    position: fixed;
+}
+.mail-compose form {
+    width: 100%;
+    max-width: 450px;
+    
+
+}
+.mail-compose .close-btn {
+    position: absolute;
+    top: 2em;
+    right: 2em;
+   
+}

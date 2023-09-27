@@ -1,44 +1,111 @@
 
 .email-preview {
-    margin: 25px;
+     /* margin: 25px;
     padding: 5px;
     background-color: lightgray;
     border-radius: 5px;
-    flex-direction: column;
+    display :flex;
+    align-items: start;  */
+
+    /*display: flex;
+    align-items: center;
+    gap: 1em;
+    padding-block: 0.6em;
+    padding-inline: 1em;
+    margin-inline-end: 0;
+    min-height: auto;
+    cursor: pointer;*/
+  
+    grid-template-areas: "star open date mailAction";
+    grid-template-columns: 40px 1fr 150px 100px;
+    width: 100%;
+    gap: 20px;
     
 
 }
-.open{
-  display: flex;
+.star{
+  grid-area: star;
+}
+
+/*.mail-from {
+  grid-area: from;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.mail-subject{
+  grid-area: subject;
 
 }
-.mesicon{
-  margin-right: 10px;
-  margin-top: 3px;
+.mail-body {
+  grid-area: body;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}*/
+.open{
+  grid-area: open;
+  grid-template-columns: 1fr;
+
 }
-.dark{
+
+.mail-date {
+  grid-area: date;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.email-action{
+  grid-area: mailAction;
+ 
+}
+.mail-content{
+  grid-template-areas: "from subject body";
+  grid-column: auto;
+  grid-template-columns: 250px 1fr 1fr;
+
+ 
+}
+.mail-from{
+  grid-area: from;
+}
+.mail-subject{
+  grid-area: subject;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.mail-body{
+  grid-area: body;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+
+}
+.mail-seprator {
+  display: none;
+}
+
+.email-preview.grid.dark {
   font-weight: bold;
 
 
 }
-.light{
+.email-preview.grid.light{
   font-weight: normal;
 
 
 }
-
-
 
 h2 {
     margin: 4px;
     font-size: 90%;
   }
   .email-preview:hover {
-    background-color: rgb(91, 91, 82);
+    background-color: rgb(233, 233, 233);
+    box-shadow: 10px 5px 5px rgba(0, 0, 255, .2);
+
   }
  
   
-ul {
-   list-style: none;
-}
 
