@@ -24,16 +24,23 @@ export function EmailNav({onSetFilter}) {
 
         setfilterByToEdit((prevFilter) => ({ ...prevFilter, isStarred: true }))
     }
+    function handleunRead() {
+
+        setfilterByToEdit((prevFilter) => ({ ...prevFilter, isRead: false }))
+    }
 
     return (
         <div className="EmailNav">
             <div >
-            <Link to="/mail/compose"><button> Compose</button></Link>
+            <Link to="/mail/compose"><button className="btncompose"> Compose</button></Link>
             </div> 
-            <button onClick={handleReadChange} >Read</button>
-            <button>UnRead</button>
-            <button onClick={handleAllmail}>All Mail</button>
-            <button onClick={handlestarmail}>Stars</button>
+            <div className="EmailNavoption">
+            <button className="btnread" onClick={handleReadChange} >Read</button>
+            <button className="btnunread" onClick={handleunRead}>UnRead</button>
+            <button className="btnallmail"  onClick={handleAllmail}>All Mail</button>
+            <button className="btnstar" onClick={handlestarmail}>Stars</button>
+            <button className="btndraft" onClick={handlestarmail}>Draft</button>
+            </div>
         </div>
 
     )
