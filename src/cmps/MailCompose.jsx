@@ -50,9 +50,9 @@ async function onSubmitEmail(ev){
       <h1>new mail</h1>
       <form onSubmit={onSubmitEmail} >
       <Link to="/mail"><button className="close-btn">X</button></Link>
-        <input value={to} onChange={handleChange} name="to" type="text" id="to" placeholder="mail to:" />
-        <input value={subject} onChange={handleChange} name="subject"  type="text" id="subjectnewmail" placeholder="subject:" />
-        <input value={body} onChange={handleChange} name="body"  type="text" id="bodymessage" placeholder="message:" />
+        <input className="composeto" value={to} onChange={handleChange} name="to" type="text" id="to" placeholder="mail to:" />
+        <input className="composesubject" value={subject} onChange={handleChange} name="subject"  type="text" id="subjectnewmail" placeholder="subject:" />
+        <input className="composebody" value={body} onChange={handleChange} name="body"  type="text" id="bodymessage" placeholder="message:" />
         <button className="send-btn">Send</button>
 
 

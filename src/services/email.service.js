@@ -23,11 +23,15 @@ async function query(filterBy) {
         emails = emails.filter(email => email.subject.toLowerCase().includes(subject.toLowerCase())|| 
         email.body.toLowerCase().includes(subject.toLowerCase()))
     }
-    if(filterBy.isRead !== null){
-        emails = emails.filter(email=> email.isRead ===filterBy.isRead)
+    if(filterBy.folder === 'read'){
+        emails = emails.filter(email=> email.isRead )
     }
     if(filterBy.isStarred !== null){
         emails = emails.filter(email=> email.isStarred ===filterBy.isStarred)
+    }
+    if(filterBy.from===loggedinUser.email){
+        emails = emails.filter(email=> email.from ===filterBy.from)
+
     }
     return emails
 }
@@ -58,7 +62,7 @@ function getDefaultFilter() {
     }
 }
 
-function createEmail(subject = '', body = '', isRead = false, isStarred = false, sentAt = '', removedAt = null, //for later use
+function createEmail(subject = '', body = '', isRead = false, isStarred = false, sentAt = Date.now(), removedAt = null, //for later use
     from = 'lee@gmail.com', to = '') {
     return {
         subject,

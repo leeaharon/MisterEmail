@@ -23,8 +23,7 @@ export function MailIndex() {
     const navigate =useNavigate()
     const [filterBy, setfilterBy] = useState({
         subject: '',
-        isRead: null,
-        isStarred: null
+        folder:'inbox'
     })
 
 

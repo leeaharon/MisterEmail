@@ -43,7 +43,6 @@
 }
 .EmailNav .btnread{
     height: 25px;
-    margin-top: 15px;
     /* padding: 0 0 0 20px; */
     min-width: 80px;
     text-align: center;
@@ -67,6 +66,8 @@
 }
 .EmailNav .btnallmail{
     height: 25px;
+    margin-top: 15px;
+
     /* padding: 0 0 0 20px; */
     min-width: 80px;
     text-align: center;

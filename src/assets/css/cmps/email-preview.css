@@ -17,7 +17,7 @@
     cursor: pointer;*/
   
     grid-template-areas: "star open date mailAction";
-    grid-template-columns: 40px 1fr 150px 100px;
+    grid-template-columns: 40px 1fr 200px 100px;
     width: 100%;
     gap: 20px;
     
