@@ -43,16 +43,34 @@ export function MailIndex() {
     }
 
 
-    async function onRemoveEmail(emailId) {
-        try {
-            console.log('emailId', emailId);
-            await emailService.remove(emailId)
-            setEmails((prevEmails) => prevEmails.filter(email => email.id !== emailId))
-        } catch (err) {
-            console.log('Had issues loading emails', err);
-        }
+    // async function onRemoveEmail(emailId) {
+    //     try {
+           
+            
+    //         await emailService.remove(emailId)
+    //         setEmails((prevEmails) => prevEmails.filter(email => email.id !== emailId))
+    //     } catch (err) {
+    //         console.log('Had issues loading emails', err);
+    //     }
+    // }
+     async function onRemoveEmail(email) {
+        email.removedAt = true
+        console.log("email id:",email.id);
+        console.log("removeat new",email.removedAt);
+        try{
+        await emailService.save(email)
+        setEmails(emails.filter(email => {
+            if (email.id === email.id) {
+                return { ...email, removedAt: !email.removedAt };
+            }
+            return email;
+        }))
+    } catch (err) {
+        console.log('Had issues loading emails', err);
+    }
     }
 
+    
 
     async function onSaveeEmail(emailId) {
         try {

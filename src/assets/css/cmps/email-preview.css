@@ -18,7 +18,7 @@
   
     grid-template-areas: "star open date mailAction";
     grid-template-columns: 40px 1fr 200px 100px;
-    width: 100%;
+    
     gap: 20px;
     
 
@@ -93,6 +93,7 @@
 }
 .email-preview.grid.light{
   font-weight: normal;
+  width: 100%;
 
 
 }
@@ -103,9 +104,9 @@ h2 {
   }
   .email-preview:hover {
     background-color: rgb(233, 233, 233);
-    box-shadow: 10px 5px 5px rgba(0, 0, 255, .2);
+    box-shadow:  rgba(0, 0, 255, .2);
 
   }
- 
+
   
 

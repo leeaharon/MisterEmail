@@ -9,6 +9,9 @@
     background-color: rgb(211, 211, 211);
     border-radius: 1em;
     position: fixed;
+    bottom: 35px;
+    left: 35px;
+    height: 300px;
 }
 
 .mail-compose form {
@@ -32,7 +35,7 @@
 .mail-compose .composebody {
     grid-area: body;
     width: 200px;
-    height: 250px;
+    height: 170px;
     
 }
 

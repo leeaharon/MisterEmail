@@ -26,11 +26,18 @@ async function query(filterBy) {
     if(filterBy.folder === 'read'){
         emails = emails.filter(email=> email.isRead )
     }
-    if(filterBy.isStarred !== null){
-        emails = emails.filter(email=> email.isStarred ===filterBy.isStarred)
+    if(filterBy.folder === 'unread'){
+        emails = emails.filter(email=> !email.isRead )
     }
-    if(filterBy.from===loggedinUser.email){
-        emails = emails.filter(email=> email.from ===filterBy.from)
+    if(filterBy.folder === 'stars'){
+        emails = emails.filter(email=> email.isStarred )
+    }
+    if(filterBy.folder === 'inbox'){
+        
+        emails = emails.filter(email=> !email.removedAt )
+    }
+    if(filterBy.folder === 'sent'){
+        emails = emails.filter(email=> email.from ===loggedinUser.email) 
 
     }
     return emails

@@ -99,8 +99,42 @@
     color: #2e353a;
     font-family: "Google Sans",Roboto,RobotoDraft,Helvetica,Arial,sans-serif;
 } 
+.EmailNav  .btnsentmail{
+    height: 25px;
+    /* padding: 0 0 0 20px; */
+    min-width: 80px;
+    text-align: center;
+    background-color: rgb(175, 175, 175);
+    border-color:rgb(175, 175, 175);
+    color: #2e353a;
+    font-family: "Google Sans",Roboto,RobotoDraft,Helvetica,Arial,sans-serif;
+} 
+.EmailNav  .btndraf{
+    height: 25px;
+    /* padding: 0 0 0 20px; */
+    min-width: 80px;
+    text-align: center;
+    background-color: rgb(175, 175, 175);
+    border-color:rgb(175, 175, 175);
+    color: #2e353a;
+    font-family: "Google Sans",Roboto,RobotoDraft,Helvetica,Arial,sans-serif;
+} 
+.EmailNav  .btnbinmail{
+    height: 25px;
+    /* padding: 0 0 0 20px; */
+    min-width: 80px;
+    text-align: center;
+    background-color: rgb(175, 175, 175);
+    border-color:rgb(175, 175, 175);
+    color: #2e353a;
+    font-family: "Google Sans",Roboto,RobotoDraft,Helvetica,Arial,sans-serif;
+} 
 
-.EmailNav .btncompose:hover, .btnstar:hover, .btnallmail:hover,.btnunread:hover,.btnread:hover, .btndraft:hover{
+
+
+
+.EmailNav .btncompose:hover, .btnstar:hover, .btnallmail:hover,.btnunread:hover,.btnread:hover, .btndraft:hover,
+.btnbinmail:hover,.btndraf:hover,.btnsentmail:hover{
     background-color: rgb(226, 226, 226);
 }
 
@@ -127,6 +161,8 @@ font-size: 18px;
 
 .email-list {
     grid-area: list;
+    width: 100%;
+    padding: 0;
 }
 
 .emails_index>span back a {

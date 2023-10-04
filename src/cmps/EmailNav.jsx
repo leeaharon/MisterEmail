@@ -24,27 +24,27 @@ export function EmailNav({onSetFilter}) {
  
 
 
-    function handleReadChange() {
+    // function handleReadChange() {
 
 
-        //setfilterByToEdit((prevFilter) => ({ ...prevFilter, isRead: true }))
-    }
-    function handleAllmail() {
+    //     //setfilterByToEdit((prevFilter) => ({ ...prevFilter, isRead: true }))
+    // }
+    // function handleAllmail() {
 
-        setfilterByToEdit((prevFilter) => ({ ...prevFilter,isRead:null,isStarred:null,from:''}))
-    }
-    function handlestarmail() {
+    //     setfilterByToEdit((prevFilter) => ({ ...prevFilter,isRead:null,isStarred:null,from:''}))
+    // }
+    // function handlestarmail() {
 
-        setfilterByToEdit((prevFilter) => ({ ...prevFilter, isStarred: true }))
-    }
-    function handleunRead() {
+    //     setfilterByToEdit((prevFilter) => ({ ...prevFilter, isStarred: true }))
+    // }
+    // function handleunRead() {
 
-        setfilterByToEdit((prevFilter) => ({ ...prevFilter, isRead: false }))
-    }
-    function handlesentmail() {
+    //     setfilterByToEdit((prevFilter) => ({ ...prevFilter, isRead: false }))
+    // }
+    // function handlesentmail() {
 
-        setfilterByToEdit((prevFilter) => ({ ...prevFilter, from: 'lee@gmail.com' }))
-    }
+    //     setfilterByToEdit((prevFilter) => ({ ...prevFilter, from: 'lee@gmail.com' }))
+    // }
 
     return (
         <div className="EmailNav">
@@ -54,10 +54,12 @@ export function EmailNav({onSetFilter}) {
             <div className="EmailNavoption">
             <button className="btnallmail" onClick={()=>onSetFolder('inbox')}>Inbox</button>
             <button className="btnread" onClick={()=>onSetFolder('read')} >Read</button>
-            <button className="btnunread" onClick={handleunRead}>UnRead</button>
-            <button className="btnstar" onClick={handlestarmail}>Stars</button>
-            <button className="btndraft" onClick={handlestarmail}>Draft</button>
-            <button className="btnsentmail" onClick={handlesentmail}>Sent</button>
+            <button className="btnunread" onClick={()=>onSetFolder('unread')}>UnRead</button>
+            <button className="btnstar" onClick={()=>onSetFolder('stars')}>Stars</button>
+            <button className="btndraft" onClick={()=>onSetFolder('draft')}>Draft</button>
+            <button className="btnsentmail" onClick={()=>onSetFolder('sent')}>Sent</button>
+            <button className="btnbinmail" onClick={()=>onSetFolder('bin')}>Bin</button>
+
 
 
             </div>

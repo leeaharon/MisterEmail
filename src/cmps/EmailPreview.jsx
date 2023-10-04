@@ -40,7 +40,9 @@ export function EmailPreview({ email, ontoggleisStar, onRemove }) {
             </Link>
             <span className="mail-date">{currentDate}</span>  {/*להמיר את השדה לתצוגת תאריך רגילה */}
             <div className="email-action">
-                <button onClick={() => onRemove(email.id)}><MdDelete /></button>
+                {/* <button onClick={() => onRemove(email.id)}><MdDelete /></button> */}
+                <button onClick={() => onRemove(email)}><MdDelete /></button>
+
                 <span ><HiMail /> </span>
             </div>
 
