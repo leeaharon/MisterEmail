@@ -7,7 +7,8 @@ export const emailService = {
     remove,
     getById,
     createEmail,
-    _createEmails
+    _createEmails,
+    countermails
     
 }
 
@@ -24,20 +25,23 @@ async function query(filterBy) {
         email.body.toLowerCase().includes(subject.toLowerCase()))
     }
     if(filterBy.folder === 'read'){
-        emails = emails.filter(email=> email.isRead )
+        emails = emails.filter(email=> email.isRead && !email.removedAt )
     }
     if(filterBy.folder === 'unread'){
-        emails = emails.filter(email=> !email.isRead )
+        emails = emails.filter(email=> !email.isRead && !email.removedAt)
     }
     if(filterBy.folder === 'stars'){
-        emails = emails.filter(email=> email.isStarred )
+        emails = emails.filter(email=> email.isStarred && !email.removedAt)
     }
     if(filterBy.folder === 'inbox'){
         
-        emails = emails.filter(email=> !email.removedAt )
+        emails = emails.filter(email=> !email.removedAt && email.from!='lee@gmail.com' )
     }
     if(filterBy.folder === 'sent'){
         emails = emails.filter(email=> email.from ===loggedinUser.email) 
+    }
+    if(filterBy.folder === 'bin'){
+        emails = emails.filter(email=> email.removedAt) 
 
     }
     return emails
@@ -50,6 +54,20 @@ function getById(id) {
 
 function remove(id) {
     return storageService.remove(STORAGE_KEY, id)
+}
+async function countermails()
+{
+    let emails=[]
+    let counter
+    emails=await storageService.query(STORAGE_KEY)
+    const unreademails=emails.filter(email=> !email.isRead && !email.removedAt)
+    counter=unreademails.length;
+    if(counter===0)
+    {counter=counter.toString()
+    counter=''}
+    return counter;
+
+
 }
 
 

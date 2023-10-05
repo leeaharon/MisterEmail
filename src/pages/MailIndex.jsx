@@ -20,16 +20,33 @@ import { EmailNav } from '../cmps/EmailNav';
 export function MailIndex() {
 
     const [emails, setEmails] = useState(null)
-    const navigate =useNavigate()
+    const navigate = useNavigate()
     const [filterBy, setfilterBy] = useState({
         subject: '',
-        folder:'inbox'
+        folder: 'inbox'
     })
+    const [countUnread, setcountUnread] = useState(null)
+
+
+
 
 
     useEffect(() => {
         loadEmails()
     }, [filterBy])
+
+    useEffect(() => {
+       
+        countEmails()
+    }, [])
+
+    async function countEmails() {
+        const countUnread = await emailService.countermails()
+        setcountUnread(countUnread)
+        //console.log("unread count: ",mailscount)
+    }
+
+
 
     async function loadEmails() {
         try {
@@ -45,32 +62,46 @@ export function MailIndex() {
 
     // async function onRemoveEmail(emailId) {
     //     try {
-           
-            
+
+
     //         await emailService.remove(emailId)
     //         setEmails((prevEmails) => prevEmails.filter(email => email.id !== emailId))
     //     } catch (err) {
     //         console.log('Had issues loading emails', err);
     //     }
     // }
-     async function onRemoveEmail(email) {
-        email.removedAt = true
-        console.log("email id:",email.id);
-        console.log("removeat new",email.removedAt);
-        try{
-        await emailService.save(email)
-        setEmails(emails.filter(email => {
-            if (email.id === email.id) {
-                return { ...email, removedAt: !email.removedAt };
+    async function onRemoveEmail(email) {
+        if (email.removedAt) {
+            try {
+
+                await emailService.remove(email.id)
+
+                setEmails(emails.filter(mail => mail.id !== email.id))
+                // loadEmails()
             }
-            return email;
-        }))
-    } catch (err) {
-        console.log('Had issues loading emails', err);
-    }
+            catch (err) {
+                console.log('Had issues remove emails', err);
+            }
+        }
+
+        else {
+            email.removedAt = true
+            try {
+                await emailService.save(email)
+                setEmails(emails.filter(email => !email.removedAt)
+                    // setEmails(emails.filter(email => {
+                    //     if (email.id === email.id) {
+                    //         return { ...email, removedAt: !email.removedAt };
+                    //     }
+                    // })
+                )
+            } catch (err) {
+                console.log('Had issues loading emails', err);
+            }
+        }
     }
 
-    
+
 
     async function onSaveeEmail(emailId) {
         try {
@@ -104,17 +135,17 @@ export function MailIndex() {
         setfilterBy((prevFilterBy) => ({ ...prevFilterBy, ...filterBy }))
     }
 
-    async function onSendMail(mail){
-  try{
-    const addEmail=await emailService.save(mail)
-    setEmails((prevEmails)=>[addEmail,...prevEmails])
-    console.log("add email",addEmail);
-    navigate('/mail')
-  }
-  catch (err){
-    console.log("the mail not send",err);
+    async function onSendMail(mail) {
+        try {
+            const addEmail = await emailService.save(mail)
+            setEmails((prevEmails) => [addEmail, ...prevEmails])
+            console.log("add email", addEmail);
+            navigate('/mail')
+        }
+        catch (err) {
+            console.log("the mail not send", err);
 
-  }
+        }
 
     }
 
@@ -127,8 +158,8 @@ export function MailIndex() {
             <EmailList emails={emails} onRemove={onRemoveEmail} onSave={onSaveeEmail}
                 ontoggleisStar={ontoggleisStar}
             />
-            <EmailNav onSetFilter={onSetFilter} />
-            <Outlet context={{onSendMail}} />
+            <EmailNav onSetFilter={onSetFilter} countUnread={countUnread} />
+            <Outlet context={{ onSendMail }} />
         </section>
     )
 }

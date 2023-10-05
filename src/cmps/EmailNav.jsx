@@ -2,10 +2,13 @@ import { useEffect, useState } from "react"
 import { Link } from "react-router-dom"
 
 
-export function EmailNav({onSetFilter}) {
+export function EmailNav({onSetFilter, countUnread}) {
 
     const [filterByToEdit, setfilterByToEdit] = useState({ subject: '', isRead: null, isStarred: null })
     const [folder,setfolder]=useState('inbox')
+    const counterUnreadMails=countUnread
+   
+    console.log("counterUnreadMails",counterUnreadMails);
     // useEffect(() => {
     //     onSetFilter(filterByToEdit)
 
@@ -52,7 +55,8 @@ export function EmailNav({onSetFilter}) {
             <Link to="/mail/compose"><button className="btncompose"> Compose</button></Link>
             </div> 
             <div className="EmailNavoption">
-            <button className="btnallmail" onClick={()=>onSetFolder('inbox')}>Inbox</button>
+            <button className="btnallmail" onClick={()=>onSetFolder('inbox')}>Inbox {counterUnreadMails}</button>
+            
             <button className="btnread" onClick={()=>onSetFolder('read')} >Read</button>
             <button className="btnunread" onClick={()=>onSetFolder('unread')}>UnRead</button>
             <button className="btnstar" onClick={()=>onSetFolder('stars')}>Stars</button>

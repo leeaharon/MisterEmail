@@ -32,6 +32,11 @@ export function EmailFilter({ onSetFilter }) {
                 onChange={handleSubjectChange}
                 value={filterByToEdit.subject} />
             <button className="BtnboxSearch">Search</button>
+            <select>
+                <option value="year">Year</option>
+                <option value="subject">subject</option>
+
+            </select>
 
         </form>
 

@@ -10,7 +10,8 @@ import { Link } from "react-router-dom";
 export function EmailPreview({ email, ontoggleisStar, onRemove }) {
 
     const isBold = email.isRead ? 'light' : 'dark'
-    console.log("isread in preview class", isBold);
+   // console.log("isread in preview class", isBold);
+   
 
     let currentDate = format(email.sentAt, 'MMMM do yyyy, h:mm:ss a');
     console.log(currentDate);
@@ -38,11 +39,10 @@ export function EmailPreview({ email, ontoggleisStar, onRemove }) {
                     <span>{email.from}</span>
                     <h2>{email.subject}</h2></div> */}
             </Link>
-            <span className="mail-date">{currentDate}</span>  {/*להמיר את השדה לתצוגת תאריך רגילה */}
+            <span className="mail-date">{currentDate}</span>  
             <div className="email-action">
                 {/* <button onClick={() => onRemove(email.id)}><MdDelete /></button> */}
                 <button onClick={() => onRemove(email)}><MdDelete /></button>
-
                 <span ><HiMail /> </span>
             </div>
 
