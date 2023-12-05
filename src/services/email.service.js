@@ -35,7 +35,7 @@ async function query(filterBy) {
     }
     if(filterBy.folder === 'inbox'){
         
-        emails = emails.filter(email=> !email.removedAt && email.from!='lee@gmail.com' )
+        emails = emails.filter(email=> !email.removedAt  )//לרשום תנאים להצגת מיילים באינבוקס
     }
     if(filterBy.folder === 'sent'){
         emails = emails.filter(email=> email.from ===loggedinUser.email) 

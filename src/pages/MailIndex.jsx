@@ -43,7 +43,7 @@ export function MailIndex() {
     async function countEmails() {
         const countUnread = await emailService.countermails()
         setcountUnread(countUnread)
-        //console.log("unread count: ",mailscount)
+        console.log("unread count: ",countUnread)
     }
 
 
@@ -105,7 +105,7 @@ export function MailIndex() {
 
     async function onSaveeEmail(emailId) {
         try {
-            console.log('emailId', emailId);
+         
             await emailService.save(emailId)
             setEmails((prevEmails) => prevEmails.filter(email => email.id == emailId))
         } catch (err) {
@@ -136,9 +136,16 @@ export function MailIndex() {
     }
 
     async function onSendMail(mail) {
+        
         try {
             const addEmail = await emailService.save(mail)
-            setEmails((prevEmails) => [addEmail, ...prevEmails])
+            // add a condition which breaks the pointer and activates setMails only if the reciever is equal to user name .
+
+            if (addEmail.to ==='lee@gmail.com'){
+                console.log('breaks pointer')
+                setEmails((prevEmails) => [addEmail, ...prevEmails])
+
+            }
             console.log("add email", addEmail);
             navigate('/mail')
         }

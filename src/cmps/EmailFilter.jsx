@@ -26,8 +26,8 @@ export function EmailFilter({ onSetFilter }) {
     
     return (
         <form className="email-filter" onSubmit={onSubmitFilter}>
-            <label htmlFor="subject">subject: </label>
-            
+           {/* <label htmlFor="subject">subject: </label>
+            */}
             <input className="boxSearch"  type="text" id="subject" placeholder="search by subject message"
                 onChange={handleSubjectChange}
                 value={filterByToEdit.subject} />
