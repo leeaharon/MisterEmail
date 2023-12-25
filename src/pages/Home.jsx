@@ -1,10 +1,16 @@
-import imgUrl from '../assets/imgs/email_servies.jpg'
+import imgUrl from '../assets/imgs/Gmail-logo-color.jpeg'
+ 
 
 export function Home() {
     return (
+
+        
         <section className="home">
-            <h1>Welcome to Email </h1>
-            <img src={imgUrl} alt="" />
+           <div className="gmail_logo">
+                <img src={imgUrl} />
+                
+            </div>
+           
         </section>
     )
 }

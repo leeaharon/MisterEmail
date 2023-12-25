@@ -70,6 +70,26 @@ export function MailIndex() {
     //         console.log('Had issues loading emails', err);
     //     }
     // }
+    async function onReadEmail(mail) {
+
+        try{
+            mail.isRead=!mail.isRead;
+
+            await emailService.save(mail)
+            setEmails(emails.map(email => {
+                if (email.id === mail.id) {
+                    return { ...email, isRead: mail.isRead };
+                }
+                return email;
+            }))        }
+            catch (err) {
+                console.log('the mail not readed', err);
+            }
+        
+
+        
+    }
+
     async function onRemoveEmail(email) {
         if (email.removedAt) {
             try {
@@ -163,7 +183,7 @@ export function MailIndex() {
         <section className="emails_index">
             <EmailFilter onSetFilter={onSetFilter} />
             <EmailList emails={emails} onRemove={onRemoveEmail} onSave={onSaveeEmail}
-                ontoggleisStar={ontoggleisStar}
+                ontoggleisStar={ontoggleisStar} onReadEmail={onReadEmail}
             />
             <EmailNav onSetFilter={onSetFilter} countUnread={countUnread} />
             <Outlet context={{ onSendMail }} />

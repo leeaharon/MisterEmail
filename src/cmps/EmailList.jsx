@@ -10,7 +10,7 @@ import { emailService } from "../services/email.service";
 
 
 
-export function EmailList({ emails, onRemove, ontoggleisStar }) {
+export function EmailList({ emails, onRemove, ontoggleisStar ,onReadEmail}) {
 
 
 
@@ -19,7 +19,7 @@ export function EmailList({ emails, onRemove, ontoggleisStar }) {
 
         <ul className="email-list">
             {emails.map(email =>
-                <EmailPreview email={email} onRemove={onRemove} ontoggleisStar={ontoggleisStar} key={email.id} />
+                <EmailPreview email={email} onReadEmail={onReadEmail} onRemove={onRemove} ontoggleisStar={ontoggleisStar} key={email.id} />
             )
             }
         </ul>

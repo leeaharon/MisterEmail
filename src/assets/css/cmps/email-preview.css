@@ -55,12 +55,9 @@
   text-overflow: ellipsis;
   white-space: nowrap;
 }
-.email-action{
-  grid-area: mailAction;
- 
-}
+
 .mail-content{
-  grid-template-areas: "from subject body";
+  grid-template-areas: "from to subject body";
   grid-column: auto;
   grid-template-columns: 250px 1fr 1fr;
 
@@ -69,6 +66,10 @@
 .mail-from{
   grid-area: from;
 }
+.mail-to{
+  grid-area: to;
+}
+
 .mail-subject{
   grid-area: subject;
   overflow: hidden;
@@ -102,11 +103,25 @@ h2 {
     margin: 4px;
     font-size: 90%;
   }
+
+.email-action{
+    grid-area: mailAction;
+    display: none;
+    /* justify-content: right; */
+   
+  }
   .email-preview:hover {
     background-color: rgb(233, 233, 233);
     box-shadow:  rgba(0, 0, 255, .2);
-
+  
   }
-
+  .email-preview:hover .email-action{
+    grid-area: mailAction;
+    display: block;
+    display: flex;
+    justify-content: right;
+  }
+  
+ 
   
 

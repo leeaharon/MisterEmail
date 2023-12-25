@@ -34,8 +34,8 @@ async function query(filterBy) {
         emails = emails.filter(email=> email.isStarred && !email.removedAt)
     }
     if(filterBy.folder === 'inbox'){
-        
-        emails = emails.filter(email=> !email.removedAt  )//לרשום תנאים להצגת מיילים באינבוקס
+        emails = emails.filter(email=>( !email.removedAt && !(email.from ===loggedinUser.email))  )
+       // emails = emails.filter(email=>( (!email.removedAt && email.to ===loggedinUser.email && !email.from ===loggedinUser.email )|| (!email.removedAt && email.to ===loggedinUser.email && email.from ===loggedinUser.email )))//לרשום תנאים להצגת מיילים באינבוקס
     }
     if(filterBy.folder === 'sent'){
         emails = emails.filter(email=> email.from ===loggedinUser.email) 
@@ -43,6 +43,9 @@ async function query(filterBy) {
     if(filterBy.folder === 'bin'){
         emails = emails.filter(email=> email.removedAt) 
 
+    }
+    if(filterBy.folder === 'draft'){
+        emails = emails.filter(email=> email.isDraft )
     }
     return emails
 }
@@ -60,7 +63,7 @@ async function countermails()
     let emails=[]
     let counter
     emails=await storageService.query(STORAGE_KEY)
-    const unreademails=emails.filter(email=> !email.isRead && !email.removedAt)
+    const unreademails=emails.filter(email=> !email.isRead && !email.removedAt && !(email.from ===loggedinUser.email))
     counter=unreademails.length;
     if(counter===0)
     {counter=counter.toString()
@@ -87,8 +90,8 @@ function getDefaultFilter() {
     }
 }
 
-function createEmail(subject = '', body = '', isRead = false, isStarred = false, sentAt = Date.now(), removedAt = null, //for later use
-    from = 'lee@gmail.com', to = '') {
+function createEmail(subject = '', body = '', isRead = null, isStarred = false, sentAt = Date.now(), removedAt = null, //for later use
+    from = 'lee@gmail.com', to = '',isDraft= null) {
     return {
         subject,
         body,
@@ -97,7 +100,8 @@ function createEmail(subject = '', body = '', isRead = false, isStarred = false,
         sentAt,
         removedAt,
         from,
-        to
+        to,
+        isDraft
     }
 }
 const loggedinUser = {
@@ -120,7 +124,8 @@ function _createEmails() {
                 sentAt: 1551133930594,
                 removedAt: null, //for later use
                 from: 'momo@momo.com',
-                to: 'lee@gmail.com'
+                to: 'lee@gmail.com',
+                isDraft:false
             },
 
             {
@@ -132,7 +137,9 @@ function _createEmails() {
                 sentAt: 2551133930594,
                 removedAt: null, //for later use
                 from: '2momo@momo.com',
-                to: 'lee@gmail.com'
+                to: 'lee@gmail.com',
+                isDraft:false
+
             },
             
 
@@ -145,7 +152,9 @@ function _createEmails() {
                 sentAt: 3551133930594,
                 removedAt: null, //for later use
                 from: '3momo@momo.com',
-                to: 'lee@gmail.com'
+                to: 'lee@gmail.com',
+                isDraft:false
+
             },
             {
                 id: 'e104',
@@ -156,7 +165,9 @@ function _createEmails() {
                 sentAt: 3551133930594,
                 removedAt: null, //for later use
                 from: '4momo@momo.com',
-                to: 'lee@gmail.com'
+                to: 'lee@gmail.com',
+                isDraft:false
+
             },
         ]
         utilService.saveToStorage(STORAGE_KEY, emails)
