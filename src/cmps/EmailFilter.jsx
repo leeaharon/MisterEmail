@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react"
+import { IoRefresh } from "react-icons/io5";
+import { emailService } from "../services/email.service";
 
-export function EmailFilter({ onSetFilter }) {
+export function EmailFilter({ onSetFilter,loadEmails }) {
     const [filterByToEdit, setfilterByToEdit] = useState({ subject: '', isRead: null, isStarred: null })
 
     useEffect(() => {
@@ -19,7 +21,6 @@ export function EmailFilter({ onSetFilter }) {
     function onSubmitFilter(ev) {
         ev.preventDefault()//מבטל רפרוש שלוחצים submit
         console.log("filterbytoedis", filterByToEdit)
-
         onSetFilter(filterByToEdit)
     }
 
@@ -32,11 +33,13 @@ export function EmailFilter({ onSetFilter }) {
                 onChange={handleSubjectChange}
                 value={filterByToEdit.subject} />
             <button className="BtnboxSearch">Search</button>
-            <select>
+            {/* <select value={filterByToEdit.}>
                 <option value="year">Year</option>
                 <option value="subject">subject</option>
+            </select> */}
+            <button className="btnrefresh" onClick={() => {loadEmails()}}><IoRefresh   /></button>
 
-            </select>
+
 
         </form>
 

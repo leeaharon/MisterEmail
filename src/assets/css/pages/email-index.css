@@ -12,6 +12,14 @@
     margin-left: 20px;
 
 }
+.email-filter .btnrefresh{
+    background: none;
+    border: none;
+}
+.email-filter .btnrefresh:hover{
+    background-color:#efeded;
+    border-radius: 60px;
+}
 
 .boxSearch {
     border-radius:24px;

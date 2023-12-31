@@ -181,7 +181,7 @@ export function MailIndex() {
     return (
 
         <section className="emails_index">
-            <EmailFilter onSetFilter={onSetFilter} />
+            <EmailFilter onSetFilter={onSetFilter} loadEmails={loadEmails} />
             <EmailList emails={emails} onRemove={onRemoveEmail} onSave={onSaveeEmail}
                 ontoggleisStar={ontoggleisStar} onReadEmail={onReadEmail}
             />
