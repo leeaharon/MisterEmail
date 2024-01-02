@@ -24,6 +24,7 @@ async function query(filterBy) {
         emails = emails.filter(email => email.subject.toLowerCase().includes(subject.toLowerCase())|| 
         email.body.toLowerCase().includes(subject.toLowerCase()))
     }
+
     if(filterBy.folder === 'read'){
         emails = emails.filter(email=> email.isRead && !email.removedAt )
     }

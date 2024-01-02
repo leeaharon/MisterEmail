@@ -41,7 +41,7 @@ export function EmailNav({ onSetFilter, countUnread }) {
                 </Link>
             </div>
             <div className="EmailNavoption">
-                <button className="btnallmail" onClick={() => onSetFolder('inbox')}>Inbox {counterUnreadMails}</button>
+                <button className="btnallmail" onClick={() => ('inbox')}>Inbox {counterUnreadMails}</button>
                 <button className="btnread" onClick={() => onSetFolder('read')} >Read</button>
                 <button className="btnunread" onClick={() => onSetFolder('unread')}>UnRead</button>
                 <button className="btnstar" onClick={() => onSetFolder('stars')}>Stars</button>

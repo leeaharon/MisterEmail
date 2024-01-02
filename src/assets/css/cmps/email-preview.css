@@ -25,6 +25,9 @@
 }
 .star{
   grid-area: star;
+  background-color: none;
+    background: none;
+    border: none;
 }
 
 /*.mail-from {
@@ -87,16 +90,34 @@
   display: none;
 }
 
-.email-preview.grid.dark {
+.star .button{
+  background-color: none;
+    background: none;
+    border: none;
+}
+
+.email-preview.grid.dark  {
   font-weight: bold;
 
-
 }
+
 .email-preview.grid.light{
   font-weight: normal;
   width: 100%;
 
 
+}
+.email-preview.grid.light .btnstar{
+  background-color: none;
+  background: none;
+  border: none;
+
+}
+
+.email-preview.grid.dark .btnstar  {
+  background-color: none;
+  background: none;
+  border: none;
 }
 
 h2 {

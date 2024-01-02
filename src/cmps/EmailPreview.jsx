@@ -13,20 +13,18 @@ export function EmailPreview({ email, ontoggleisStar, onRemove , onReadEmail}) {
 
     let currentDate = format(email.sentAt, 'MMMM do yyyy, h:mm:ss a');
     console.log(currentDate);
-
     return (
         <li className={`email-preview grid ` + isBold}>
             <div className="star">
-                <button onClick={() => ontoggleisStar(email)}>
+                <button className="btnstar" onClick={() => ontoggleisStar(email)}>
                     {email.isStarred ? <IoIosStar style={{ color: "#fff700", }} />
                         : <IoIosStarOutline />}</button>
             </div>
 
-            <Link className="open" to={`/mail/${email.id}`}>
-                <div className="mail-content grid ">
+            <Link className="open" to={`/mail/${email.id}`} >
+                <div className="mail-content grid " >
                     <span className="mail-from">{email.from}</span>
                     <span className="mail-to">{email.to}</span>
-
                     <span className="mail-subject">{email.subject}</span>
                     <span className="mail-body">{email.body}</span>
                 </div>

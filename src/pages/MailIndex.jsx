@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import { Outlet, useNavigate, useParams } from "react-router"
 
 import { emailService } from "../services/email.service";
+import { eventbus } from "../services/eventbus.service";
 
 import { EmailList } from '../cmps/EmailList';
 
@@ -27,10 +28,6 @@ export function MailIndex() {
     })
     const [countUnread, setcountUnread] = useState(null)
 
-
-
-
-
     useEffect(() => {
         loadEmails()
     }, [filterBy])
@@ -39,6 +36,9 @@ export function MailIndex() {
        
         countEmails()
     }, [])
+
+   
+    
 
     async function countEmails() {
         const countUnread = await emailService.countermails()
@@ -137,14 +137,13 @@ export function MailIndex() {
         try {
 
             mail.isStarred = !mail.isStarred
-
             await emailService.save(mail)
             setEmails(emails.map(email => {
                 if (email.id === mail.id) {
                     return { ...email, isStarred: mail.isStarred };
                 }
                 return email;
-            }))
+            })) 
         } catch (err) {
             console.log('Had issues loading emails', err);
         }
