@@ -51,10 +51,15 @@ export function MailDetails({ontoggleisStar}) {
         console.log(mail.id)
         console.log(mail.isStarred);
         try {
-            mail.isStarred = !mail.isStarred
-            await emailService.save(mail)
-            // setEmail((prevlEmail) => (console.log(prevlEmail)))
+            const updateEmail={...mail,isStarred:!mail.isStarred}
+            await emailService.save(updateEmail)
             setEmail((prevlEmail) => ({ ...prevlEmail, isStarred: !prevlEmail.isStarred  }))
+
+
+            // mail.isStarred = !mail.isStarred
+            // await emailService.save(mail)
+            // // setEmail((prevlEmail) => (console.log(prevlEmail)))
+            // setEmail((prevlEmail) => ({ ...prevlEmail, isStarred: !prevlEmail.isStarred  }))
             }
          catch (err) {
             console.log('Had issues loading emails', err);
